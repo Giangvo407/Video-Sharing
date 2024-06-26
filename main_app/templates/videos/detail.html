@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/videos/video-detail.css' %}" />
+{% endblock %}
 
 {% block title %}{{ video.title }}{% endblock %}
 
@@ -14,8 +19,20 @@
 </div>
 {% if request.user == video.user %}
 <div class="video-actions">
-    <a href="{% url 'video-update' video.id %}" class="btn warn">Edit</a>
-    <a href="{% url 'video-delete' video.id %}" class="btn danger">Delete</a>
+    <a href="{% url 'video-update' video.id %}" style="--color:#1e9bff;" class="btn warn">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Edit
+    </a>
+    <a href="{% url 'video-delete' video.id %}" style="--color: #ff1867;" class="btn danger">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Delete
+    </a>
 </div>
 {% endif %}
 
@@ -30,7 +47,10 @@
         {% else %}
             <form method="post" action="{% url 'like-video' video.id %}">
                 {% csrf_token %}
-                <button type="submit">Like</button>
+                <button type="submit">
+                    <img src="{% static 'images/hand-thumbs-up.svg' %}" alt="thumb-up"> 
+                    Like
+                </button>
             </form>
         {% endif %}
     {% else %}
@@ -38,6 +58,7 @@
     {% endif %}
 </p>
 
+<section class="comment-container">
 <h3>Comments</h3>
 <ul>
     {% for comment in comments %}
@@ -52,8 +73,9 @@
     {% endfor %}
 </ul>
 
+
 {% if request.user.is_authenticated %}
-    <h3>Add a Comment</h3>
+    <h4>Add a Comment</h4>
     <form method="post" name="comment_form">
         {% csrf_token %}
         {{ form.as_p }}
@@ -62,7 +84,6 @@
 {% else %}
     <p>You must be <a href="{% url 'home' %}">logged in</a> to add a comment.</p>
 {% endif %}
-
-<a href="{% url 'index' %}">Back to Video List</a>
+</section>
 
 {% endblock %}

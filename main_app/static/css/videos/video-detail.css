@@ -1,0 +1,40 @@
+
+.video-actions a {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.video-actions a.btn.warn {
+    border-color: #1e9bff;
+    margin: 50px;
+}
+
+.video-actions a.btn.warn:hover {
+    background-color: #0d6efd;
+}
+
+.video-actions a.btn.danger {
+    border-color: #ff1867;
+    margin: 50px;
+}
+
+.video-actions a.btn.danger:hover {
+    background-color: #ff004c;
+}
+
+
+.comment-container {
+    background: white;
+    border-radius: .6rem;
+    font-size: 20px;
+    align-content: center;
+    justify-content: center;
+}
+/* form {
+    margin-top: 20px;
+} */

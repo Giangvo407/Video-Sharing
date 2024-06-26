@@ -1,14 +1,31 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/videos/video-index.css' %}" />
+{% endblock %}
 {% block title %}Video List{% endblock %}
 
 {% block content %}
 <h2>Video List</h2>
 <ul>
-    {% for video in videos %}
-        <li>
-            <a href="{% url 'video-detail' video.id %}">{{ video.title }}</a>
-        </li>
-    {% endfor %}
+    <section class="card-container">
+        {% for video in videos %}
+            <li>
+                <a href="{% url 'video-detail' video.id %}">
+                    
+                    <div class="card-img-container">
+                        <div class="card-title">
+                            {{ video.title }}
+                        </div>
+                        <img src="{% static 'images/VidPlay.jpeg' %}" alt="Video Play" class="play-img"/>
+                    </div>
+                </a>
+                    
+             </li>
+    
+        {% endfor %}
+    </section> 
 </ul>
 {% endblock %}
+

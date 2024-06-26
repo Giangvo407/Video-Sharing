@@ -9,7 +9,7 @@ main {
 }
 
 main>section {
-    background: rgba(29, 219, 232, 0.762);
+    background: rgba(200, 204, 213, 0.8);
     width: 100%;
     padding: 10px 8px;
     display: flex;

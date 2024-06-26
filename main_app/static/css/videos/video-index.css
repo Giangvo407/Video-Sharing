@@ -1,0 +1,28 @@
+.card-container {
+    padding: 0 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+li, a {
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    align-items: center;
+}
+
+.card-img-container {
+    position: relative;
+    .card-title {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    }
+    .play-img {
+    margin: 1rem;
+    }
+}
+
+
+
