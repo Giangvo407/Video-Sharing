@@ -1,4 +1,9 @@
-
+.actions-container {
+    display:flex;
+    margin:0px;
+    background:transparent;
+    position: relative;
+}
 .video-actions a {
     display: inline-block;
     margin: 10px 5px;
@@ -29,12 +34,42 @@
 
 
 .comment-container {
-    background: white;
+    background: rgba(255, 255, 255, 0.394);
     border-radius: .6rem;
+    margin-top: 40px;
     font-size: 20px;
     align-content: center;
     justify-content: center;
 }
-/* form {
-    margin-top: 20px;
-} */
+
+.comment-post {
+    background: rgba(210, 210, 218, 0.567);
+    border-radius: .6rem;
+    border-bottom: 1px solid black;
+
+    margin: 5px;
+}
+
+.btn-comment {
+    border-radius: .6rem;
+    background: orange;
+}
+
+.btn-comment:hover {
+    background: orangered;
+}
+
+.like-action {
+    border-radius: .6rem;
+    color:#1e9bff;
+    font-size: 20px;
+    position:relative;
+    top: 2rem;
+    left: 2rem;
+}
+
+.delete-img {
+    width: 20px;
+    height: 20px;
+    
+}

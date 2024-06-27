@@ -7,11 +7,7 @@
 
 {% block content %}
 
-<section class="logo-container">
-    <div>
-        <h1> You're already logged in </h1>
-    </div>
-</section>
+
 
 {% if not user.is_authenticated %}
 <main> 
@@ -24,5 +20,11 @@
         </form>
     </section>
 </main>
+{% else %}
+<section class="logo-container">
+    <div>
+        <h1> You're already logged in </h1>
+    </div>
+</section>
 {% endif %}
 {% endblock %}

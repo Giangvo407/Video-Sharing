@@ -8,6 +8,7 @@
 {% block title %}{{ video.title }}{% endblock %}
 
 {% block content %}
+
 <h2>{{ video.title }}</h2>
 <div style="position: relative;height: 0; overflow: hidden; max-width: 1000px; height: 500px;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
@@ -17,73 +18,78 @@
             allowfullscreen>
     </iframe>
 </div>
-{% if request.user == video.user %}
-<div class="video-actions">
-    <a href="{% url 'video-update' video.id %}" style="--color:#1e9bff;" class="btn warn">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        Edit
-    </a>
-    <a href="{% url 'video-delete' video.id %}" style="--color: #ff1867;" class="btn danger">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        Delete
-    </a>
-</div>
-{% endif %}
 
-<p>
-    Likes: {{ likes }}
-    {% if request.user.is_authenticated %}
-        {% if user_likes_video %}
-            <form method="post" action="{% url 'like-video' video.id %}">
-                {% csrf_token %}
-                <button type="submit">Unlike</button>
-            </form>
-        {% else %}
-            <form method="post" action="{% url 'like-video' video.id %}">
-                {% csrf_token %}
-                <button type="submit">
-                    <img src="{% static 'images/hand-thumbs-up.svg' %}" alt="thumb-up"> 
-                    Like
-                </button>
-            </form>
-        {% endif %}
-    {% else %}
-        <p>Login to like this video.</p>
+<section class="actions-container">
+    {% if request.user == video.user %}
+        <div class="video-actions">
+            <a href="{% url 'video-update' video.id %}" style="--color:#1e9bff;" class="btn warn">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Edit
+            </a>
+            <a href="{% url 'video-delete' video.id %}" style="--color: #ff1867;" class="btn danger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Delete
+            </a>
+        </div>
     {% endif %}
-</p>
+
+
+    <div class="like-action">
+        {% if request.user.is_authenticated %}
+            {% if user_likes_video %}
+                <form method="post" action="{% url 'like-video' video.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Unlike</button>
+                </form>
+            {% else %}
+                <form method="post" action="{% url 'like-video' video.id %}">
+                    {% csrf_token %}
+                    <button type="submit" style="background: #1e9bff">
+                        <img src="{% static 'images/hand-thumbs-up.svg' %}" alt="thumb-up"> 
+                        Likes: {{ likes }}
+                    </button>
+                </form>
+            {% endif %}
+        {% else %}
+            <p>Login to like this video.</p>
+        {% endif %}
+    </div>
+</section>
 
 <section class="comment-container">
-<h3>Comments</h3>
-<ul>
-    {% for comment in comments %}
-        <li>
-            <strong>{{ comment.user }}</strong>: {{ comment.text }} <em>({{ comment.created_at }})</em>
-            {% if request.user == comment.user %}
-            <a href="{% url 'delete_comment' video.id comment.id %}">Delete</a>
-            {% endif %}
-        </li>
-    {% empty %}
-        <li>No comments yet.</li>
-    {% endfor %}
-</ul>
+    <h3>Comments</h3>
+    <ul>
+        {% for comment in comments %}
+            <li class="comment-post">
+                <strong>{{ comment.user }}</strong>: {{ comment.text }} <em>({{ comment.created_at }})</em>
+                {% if request.user == comment.user %}
+                <a href="{% url 'delete_comment' video.id comment.id %}">
+                    <img src="{% static 'images/bin.png' %}" class="delete-img" alt="trash-bin">
+                </a>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>No comments yet.</li>
+        {% endfor %}
+    </ul>
 
 
-{% if request.user.is_authenticated %}
-    <h4>Add a Comment</h4>
-    <form method="post" name="comment_form">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
-{% else %}
-    <p>You must be <a href="{% url 'home' %}">logged in</a> to add a comment.</p>
-{% endif %}
+    {% if request.user.is_authenticated %}
+        <h4>Add a Comment</h4>
+        <form method="post" name="comment_form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn-comment" type="submit">Submit</button>
+        </form>
+    {% else %}
+        <p>You must be <a href="{% url 'home' %}">logged in</a> to add a comment.</p>
+    {% endif %}
 </section>
 
 {% endblock %}
