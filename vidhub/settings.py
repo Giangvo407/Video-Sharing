@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
-import dj_database_urlp
+import dj_database_url
 
 
 load_dotenv()
@@ -40,7 +40,6 @@ ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     'main_app',
-    'dj-database-url'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
