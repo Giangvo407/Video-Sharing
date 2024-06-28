@@ -13,19 +13,16 @@
         {% for video in videos %}
             <li>
                 <a href="{% url 'video-detail' video.id %}">
-                    
                     <div class="card-img-container">
                         <div class="card-title">
                             {{ video.title }}
                         </div>
-                        <img src="{% static 'images/VidPlay.jpeg' %}" alt="Video Play" class="play-img"/>
+                        <img src="https://img.youtube.com/vi/{{ video.video_url }}/0.jpg" alt="YouTube Video Thumbnail" />
                     </div>
-                </a>
-                    
-             </li>
+                </a>    
+            </li>
     
         {% endfor %}
     </section> 
 </ul>
 {% endblock %}
-

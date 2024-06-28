@@ -6,7 +6,7 @@
 }
 
 li, a {
-    font-size: 30px;
+    font-size: 16px;
     color: white;
     text-decoration: none;
     align-items: center;
@@ -20,9 +20,6 @@ li, a {
     left: 2rem;
     }
     .play-img {
-    margin: 1rem;
+    margin: rem;
     }
 }
-
-
-

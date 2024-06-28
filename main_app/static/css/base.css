@@ -51,9 +51,6 @@ header {
     border-bottom: var(--borders);
 }
 
-/* nav {
-    margin: 10px;
-} */
 
 ul {
     margin: 0;
@@ -71,6 +68,8 @@ main {
 h2 {
     font-size: var(--font-xl);
     color:rgb(118, 63, 245);
+    text-align: center;
+    margin-top: 5em;
 }
 
 nav a {
@@ -326,7 +325,7 @@ nav li {
     }
 
     header {
-        margin: 20px 20px 0 20px;
+        margin: 20px 20px 0px 20px;
         width: calc(100vw - 40px);
         max-width: 1920px;
         top: 20px;
@@ -336,13 +335,8 @@ nav li {
 
     nav {
         margin: 0;
-        background: var(--nav-bg-ff);
         border: var(--borders);
         border-radius: 18px;
-       
-    }
-
-    nav {
         margin-left: auto;
     }
 
@@ -354,6 +348,7 @@ nav li {
         background: black;
         
     }
+    
     .logo{
         height: 65px;
         width: 200px;

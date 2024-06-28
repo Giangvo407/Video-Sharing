@@ -39,15 +39,15 @@
     margin-top: 40px;
     font-size: 20px;
     align-content: center;
-    justify-content: center;
+    padding: 0px 10px ;
+    border: 1px solid blue;
 }
 
 .comment-post {
     background: rgba(210, 210, 218, 0.567);
     border-radius: .6rem;
     border-bottom: 1px solid black;
-
-    margin: 5px;
+    margin: 10px;
 }
 
 .btn-comment {
